@@ -1,0 +1,64 @@
+---
+title: "Penguins_Species_Visualisation"
+author: "Prateek Singh"
+date: "2/19/2022"
+output:
+  pdf_document: default
+  html_document: default
+---
+## Loading Packages
+
+```{r Load Package}
+library(tidyverse)
+library(ggplot2)
+library(dplyr)
+library(palmerpenguins)
+```
+
+## Viewing penguins Dataset 
+
+```{r Viewing Data}
+head(penguins)
+```
+
+## Summary of penguins dataset
+
+```{r Summary}
+summary(penguins)
+```
+
+# Visualisation of penguins dataset
+## Scatter Plot
+
+```{r Visualization_1, warning=FALSE}
+ggplot(data = penguins)+
+  geom_point(mapping = aes(x = bill_length_mm, y = body_mass_g, color = species))+
+  labs(title = "Penguins_Bill_Length",
+       subtitle = "Sactter Plot",
+       caption = "2022-Feb-19")
+```
+
+## Bar Chart
+
+```{r Visualization_2}
+ggplot(data = penguins)+
+  geom_bar(mapping = aes(x = species, fill = species))+
+  labs(title = "Penguins Species",
+       caption = "2022-Feb-19",
+       subtitle = "Bar Chart")
+```
+
+## Facet Function
+
+```{r Visualization_3, warning=FALSE}
+ggplot(data = penguins)+
+  geom_smooth(mapping = aes(x = flipper_length_mm, y = body_mass_g, color = species))+
+  facet_wrap(~species)+
+  labs(title = "Penguins_Flipper_Length",
+       subtitle = "Three Lines For Each",
+       caption = "2022-Feb-19")
+
+```
+
+
+This data is of penguin species data, which I visualised in three different charts with different columns, showing which species has different lengths such as flipper, bill, and body mass.
